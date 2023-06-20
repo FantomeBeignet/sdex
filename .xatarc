@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Tom-B-n-s-workspace-d1igoc.us-east-1.xata.sh/db/sdex",
+  "codegen": {
+    "output": "src/lib/xata.ts"
+  }
+}
