@@ -32,7 +32,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@meilisearch/instant-meilisearch": "^0.13.3",
 		"@xata.io/client": "^0.24.3",
+		"instantsearch.js": "^4.56.3",
 		"meilisearch": "^0.33.0"
 	}
 }
