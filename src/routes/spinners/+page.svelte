@@ -23,7 +23,7 @@
 			configure({
 				typoTolerance: true,
 				minWordSizefor1Typo: 2,
-				minWordSizefor2Typos: 4,
+				minWordSizefor2Typos: 4
 			}),
 
 			stats({
@@ -53,24 +53,106 @@
 				cssClasses: {
 					root: 'w-full text-gray-extralight',
 					list: 'w-full flex flex-col items-center justify-center gap-2',
-					item: 'flex w-full p-3 text-gray-extralight border-2 border-background-light hover:border-primary rounded-lg'
+					item: 'flex flex-col gap-3 w-full p-3 text-gray-extralight border-2 border-background-light hover:border-primary rounded-lg overflow-hidden'
 				},
 				templates: {
 					item(hit, { html, components }) {
 						return html`
-							<div class="flex flex-col items-start justify-center">
-								<h2>
-									${components.Highlight({
-										attribute: 'name',
-										highlightedTagName: 'span',
-										cssClasses: {
-											highlighted: 'text-primary',
-											nonHighlighted: 'text-gray-extralight'
-										},
-										hit
-									})}
-								</h2>
-								<span class="text-gray-light text-sm">${hit.aliases}</span>
+							<input type="checkbox" id="chk-${hit.name}" class="sr-only peer" />
+							<label
+								for="chk-${hit.name}"
+								class="flex items-center justify-center w-full hover:cursor-pointer"
+							>
+								<div class="flex justify-between flex-grow px-1">
+									<div class="flex flex-col items-start justify-center">
+										<h2 class="text-sm">
+											${components.Highlight({
+												attribute: 'name',
+												highlightedTagName: 'span',
+												cssClasses: {
+													highlighted: 'text-primary',
+													nonHighlighted: 'text-gray-extralight'
+												},
+												hit
+											})}
+										</h2>
+										<span class="text-xs text-gray-light"
+											>${components.Highlight({
+												attribute: 'aliases',
+												highlightedTagName: 'span',
+												cssClasses: {
+													highlighted: 'text-primary',
+													nonHighlighted: 'text-gray-light'
+												},
+												hit
+											})}</span
+										>
+									</div>
+									<div class="flex items-center justify-center text-gray-light text-sm text-end">
+										${hit.board.toUpperCase()}
+									</div>
+								</div>
+								<div class="text-gray-light fill-current p-1">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										class="w-4 h-4"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+										/>
+									</svg>
+								</div>
+							</label>
+							<div class="hidden peer-checked:flex items-center justify-between px-1 text-sm">
+								<div
+									class="flex items-center justify-start gap-2 w-11/12 overflow-hidden"
+								>
+									<img src="/twitter.svg" alt="twitter logo" class="h-4 md:h-6 w-4 md:w-6" />
+									<a
+										href="${hit.twitter_link}"
+										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap hover:underline hover:pointer-cursor"
+									>
+										<span class="text-gray-light">@</span
+										><span class="text-gray-extralight"
+											>${components.Highlight({
+												attribute: 'twitter_name',
+												highlightedTagName: 'span',
+												cssClasses: {
+													highlighted: 'text-primary',
+													nonHighlighted: 'text-gray-extralight'
+												},
+												hit
+											})}</span
+										>
+									</a>
+								</div>
+								<div
+									class="flex items-center justify-end gap-2 w-11/12 overflow-hidden"
+								>
+									<a
+										href="${hit.youtube_link}"
+										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap hover:underline hover:pointer-cursor"
+									>
+										<span class="text-gray-extralight"
+											>${components.Highlight({
+												attribute: 'youtube_name',
+												highlightedTagName: 'span',
+												cssClasses: {
+													highlighted: 'text-primary',
+													nonHighlighted: 'text-gray-extralight'
+												},
+												hit
+											})}</span
+										>
+									</a>
+									<img src="/youtube.svg" alt="youtube logo" class="h-4 md:h-6 w-4 md:w-6" />
+								</div>
 							</div>
 						`;
 					},
@@ -85,12 +167,15 @@
 				showFirst: false,
 				showLast: false,
 				cssClasses: {
-					root: 'text-gray-medium text-lg border-2 border-background-light rounded-md py-3 px-4',
-					list: 'flex items-center justify-center gap-6',
-					link: 'hover:text-gray-light',
-					selectedItem: 'text-gray-light',
-					disabledItem: 'text-background-light'
-				},
+					root: 'text-lg rounded-md text-gray-light',
+					list: 'flex items-center justify-center',
+					item: 'px-3 py-2 leading-tight border-y-2 border-x border-background-light hover:bg-background-light hover:text-gray-extralight',
+					selectedItem: 'text-gray-extralight bg-background-light',
+					disabledItem:
+						'text-background-light hover:text-background-light hover:bg-background-dark',
+					previousPageItem: 'rounded-l-md border-l-2',
+					nextPageItem: 'rounded-r-md border-r-2'
+				}
 			})
 		]);
 		search.start();
