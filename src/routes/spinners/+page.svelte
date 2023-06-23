@@ -53,7 +53,7 @@
 				cssClasses: {
 					root: 'w-full text-gray-extralight',
 					list: 'w-full flex flex-col items-center justify-center gap-2',
-					item: 'flex flex-col gap-3 w-full p-3 text-gray-extralight border-2 border-background-light hover:border-primary rounded-lg overflow-hidden'
+					item: 'flex flex-col gap-3 md:gap-4 w-full p-3 md:p-4 text-gray-extralight border-2 border-background-light hover:border-primary rounded-lg max-w-2xl transition-colors'
 				},
 				templates: {
 					item(hit, { html, components }) {
@@ -65,7 +65,7 @@
 							>
 								<div class="flex justify-between flex-grow px-1">
 									<div class="flex flex-col items-start justify-center">
-										<h2 class="text-sm">
+										<h2 class="text-sm md:text-base">
 											${components.Highlight({
 												attribute: 'name',
 												highlightedTagName: 'span',
@@ -76,7 +76,7 @@
 												hit
 											})}
 										</h2>
-										<span class="text-xs text-gray-light"
+										<span class="text-xs md:text-sm text-gray-light"
 											>${components.Highlight({
 												attribute: 'aliases',
 												highlightedTagName: 'span',
@@ -88,7 +88,7 @@
 											})}</span
 										>
 									</div>
-									<div class="flex items-center justify-center text-gray-light text-sm text-end">
+									<div class="flex items-center justify-center text-gray-light text-sm md:text-base text-end">
 										${hit.board.toUpperCase()}
 									</div>
 								</div>
@@ -109,14 +109,14 @@
 									</svg>
 								</div>
 							</label>
-							<div class="hidden peer-checked:flex items-center justify-between px-1 text-sm">
+							<div class="hidden peer-checked:flex items-center justify-between px-1 text-sm md:text-base">
 								<div
 									class="flex items-center justify-start gap-2 w-11/12 overflow-hidden"
 								>
 									<img src="/twitter.svg" alt="twitter logo" class="h-4 md:h-6 w-4 md:w-6" />
 									<a
 										href="${hit.twitter_link}"
-										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap hover:underline hover:pointer-cursor"
+										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap underline underline-offset-3 decoration-primary hover:pointer-cursor"
 									>
 										<span class="text-gray-light">@</span
 										><span class="text-gray-extralight"
@@ -137,7 +137,7 @@
 								>
 									<a
 										href="${hit.youtube_link}"
-										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap hover:underline hover:pointer-cursor"
+										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap underline underline-offset-3 decoration-primary hover:pointer-cursor"
 									>
 										<span class="text-gray-extralight"
 											>${components.Highlight({
@@ -157,7 +157,7 @@
 						`;
 					},
 					empty(_, { html }) {
-						return html`<div class="text-lg text-gray-light text-center">No spinners found</div>`;
+						return html`<div class="text-lg md:text-xl text-gray-light text-center">No spinners found</div>`;
 					}
 				}
 			}),
@@ -169,7 +169,7 @@
 				cssClasses: {
 					root: 'text-lg rounded-md text-gray-light',
 					list: 'flex items-center justify-center',
-					item: 'px-3 py-2 leading-tight border-y-2 border-x border-background-light hover:bg-background-light hover:text-gray-extralight',
+					item: 'px-3 py-2 leading-tight border-y-2 border-x border-background-light hover:bg-background-light hover:text-gray-extralight transition-colors',
 					selectedItem: 'text-gray-extralight bg-background-light',
 					disabledItem:
 						'text-background-light hover:text-background-light hover:bg-background-dark',
