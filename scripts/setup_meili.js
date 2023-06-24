@@ -18,6 +18,7 @@ client
 	.updateDisplayedAttributes([
 		'name',
 		'aliases',
+		'board',
 		'twitter_name',
 		'twitter_link',
 		'youtube_name',
