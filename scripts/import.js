@@ -35,6 +35,6 @@ lines.forEach(async (line) => {
 				board: board.trim().toUpperCase()
 			}
 		], {primaryKey: 'id'})
+		.then(() => console.log(`Imported data for ${name}`))
 		.catch((e) => console.log(`Failed to import ${name} : ${e}`))
-		.then(() => console.log(`Imported data for ${name}`));
 });
