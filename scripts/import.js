@@ -34,7 +34,7 @@ lines.forEach(async (line) => {
 				youtube_id: youtube_id.trim(),
 				board: board.trim().toUpperCase()
 			}
-		])
+		], {primaryKey: 'id'})
 		.catch((e) => console.log(`Failed to import ${name} : ${e}`))
-		.finally(() => console.log(`Imported data for ${name}`));
+		.then(() => console.log(`Imported data for ${name}`));
 });
