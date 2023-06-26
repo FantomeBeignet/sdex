@@ -15,6 +15,8 @@
 	import { singleIndex } from 'instantsearch.js/es/lib/stateMappings';
 	import { onMount } from 'svelte';
 
+	let timerId: number;
+
 	onMount(() => {
 		const searchClient = instantMeiliSearch(PUBLIC_MEILI_HOST, PUBLIC_MEILI_SEARCH_KEY, {
 			matchingStrategy: 'all' as MatchingStrategies
@@ -45,6 +47,10 @@
 					input: 'flex-grow p-4 bg-background-dark text-gray-extralight rounded-md',
 					submit: 'p-4',
 					submitIcon: 'text-gray-light fill-current h-4 w-4'
+				},
+				queryHook(query, refine) {
+					clearTimeout(timerId);
+					timerId = setTimeout(() => refine(query), 300);
 				}
 			}),
 
