@@ -12,18 +12,10 @@ client.createIndex('spinners', { primaryKey: 'id' });
 client.index('spinners').updateFilterableAttributes(['board']);
 client
 	.index('spinners')
-	.updateSearchableAttributes(['name', 'aliases', 'twitter_name', 'youtube_name']);
+	.updateSearchableAttributes(['name', 'aliases', 'twitter_id', 'youtube_id']);
 client
 	.index('spinners')
-	.updateDisplayedAttributes([
-		'name',
-		'aliases',
-		'board',
-		'twitter_name',
-		'twitter_link',
-		'youtube_name',
-		'youtube_link'
-	]);
+	.updateDisplayedAttributes(['name', 'aliases', 'board', 'twitter_id', 'youtube_id']);
 client.index('spinners').updateDistinctAttribute('name');
 client.index('spinners').updateTypoTolerance({
 	minWordSizeForTypos: {

@@ -161,47 +161,43 @@
 							>
 								<div class="flex items-center justify-start gap-2 w-11/12 overflow-hidden">
 									<img src="/twitter.svg" alt="twitter logo" class="h-4 md:h-6 w-4 md:w-6" />
-									${hit.twitter_name
+									${hit.twitter_id
 										? html`<a
-												href="${hit.twitter_link}"
+												href="https://twitter.com/${hit.twitter_id}"
 												class="text-ellipsis overflow-hidden align-middle whitespace-nowrap underline underline-offset-3 decoration-primary hover:pointer-cursor"
 										  >
 												<span class="text-gray-light">@</span>
 												<span class="text-gray-extralight"
-													>${hit.twitter_name
-														? components.Highlight({
-																attribute: 'twitter_name',
-																highlightedTagName: 'span',
-																cssClasses: {
-																	highlighted: 'text-primary',
-																	nonHighlighted: 'text-gray-extralight'
-																},
-																hit
-														  })
-														: '-'}</span
+													>${components.Highlight({
+														attribute: 'twitter_id',
+														highlightedTagName: 'span',
+														cssClasses: {
+															highlighted: 'text-primary',
+															nonHighlighted: 'text-gray-extralight'
+														},
+														hit
+													})}</span
 												>
 										  </a>`
 										: html`<span class="text-gray-light italic">No twitter found.</span>`}
 								</div>
 								<div class="flex items-center justify-end gap-2 w-11/12 overflow-hidden">
-									${hit.youtube_name
+									${hit.youtube_id
 										? html`<a
-												href="${hit.youtube_link}"
+												href="https://youtube.com/@${hit.youtube_id}"
 												class="text-ellipsis overflow-hidden align-middle whitespace-nowrap underline underline-offset-3 decoration-primary hover:pointer-cursor"
 										  >
 												<span class="text-gray-light">@</span>
 												<span class="text-gray-extralight"
-													>${hit.youtube_name
-														? components.Highlight({
-																attribute: 'youtube_name',
-																highlightedTagName: 'span',
-																cssClasses: {
-																	highlighted: 'text-primary',
-																	nonHighlighted: 'text-gray-extralight'
-																},
-																hit
-														  })
-														: '-'}</span
+													>${components.Highlight({
+														attribute: 'youtube_id',
+														highlightedTagName: 'span',
+														cssClasses: {
+															highlighted: 'text-primary',
+															nonHighlighted: 'text-gray-extralight'
+														},
+														hit
+													})}</span
 												>
 										  </a>`
 										: html`<span class="text-gray-light italic">No youtube found.</span>`}
