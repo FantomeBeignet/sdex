@@ -16,16 +16,15 @@ const client = new MeiliSearch({
 
 await client.index('spinners').deleteAllDocuments();
 
-lines.forEach(async (line) => {
+lines.forEach((line) => {
 	const info = line.split(',');
 	if (info.length != 5) return;
 	const [name, aliases, twitter_id, youtube_id, board] = info;
 	const aliases_list = aliases.length > 0 ? aliases.split(';') : [];
 	const id = createHash('sha1').update(name).digest('hex');
 
-	client
-		.index('spinners')
-		.addDocuments([
+	const importOne = client.index('spinners').addDocuments(
+		[
 			{
 				id: id,
 				name: name.trim(),
@@ -34,7 +33,13 @@ lines.forEach(async (line) => {
 				youtube_id: youtube_id.trim(),
 				board: board.trim().toUpperCase()
 			}
-		], {primaryKey: 'id'})
-		.then(() => console.log(`Imported data for ${name}`))
-		.catch((e) => console.log(`Failed to import ${name} : ${e}`))
+		],
+		{ primaryKey: 'id' }
+	);
+	setTimeout(
+		() => importOne
+			.then(() => console.log(`Imported data for ${name}`))
+			.catch((e) => console.log(`Failed to import ${name} : ${e}`)),
+		100
+	);
 });
