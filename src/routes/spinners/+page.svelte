@@ -202,7 +202,7 @@
 								<img src="/twitter.svg" alt="twitter logo" class="h-4 md:h-6 w-4 md:w-6" />
 								{#if hit.twitter_id}
 									<a
-										href="https://twitter.com/${hit.twitter_id}"
+										href={`https://twitter.com/${hit.twitter_id}`}
 										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap underline underline-offset-3 decoration-primary hover:pointer-cursor"
 									>
 										<span class="text-gray-light">@</span>
@@ -217,7 +217,7 @@
 							<div class="flex items-center justify-end gap-2 w-11/12 overflow-hidden">
 								{#if hit.youtube_id}
 									<a
-										href="https://youtube.com/@${hit.youtube_id}"
+										href={`https://youtube.com/@${hit.youtube_id}`}
 										class="text-ellipsis overflow-hidden align-middle whitespace-nowrap underline underline-offset-3 decoration-primary hover:pointer-cursor"
 									>
 										<span class="text-gray-light">@</span>
