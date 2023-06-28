@@ -98,8 +98,6 @@
 				},
 				templates: {
 					item(hit, { html, components }) {
-						console.log(components);
-						console.log(hit);
 						return html`
 							<input type="checkbox" id="chk-${hit.name}" class="sr-only peer" />
 							<label
