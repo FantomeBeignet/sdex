@@ -117,6 +117,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Search spinners</title>
+	<meta name="description" content="Penspinner database" />
+</svelte:head>
+
 <main class="bg-background-dark grid place-items-center py-10 md:py-16 px-6">
 	<div class="flex flex-col justify-center items-center gap-6 md:gap-12 w-full max-w-2xl">
 		<div class="flex flex-col items-center justify-center gap-2 w-full">

@@ -1,3 +1,8 @@
+<svelte:head>
+	<title>SpinnerDex</title>
+	<meta name="description" content="Penspinner database" />
+</svelte:head>
+
 <main class="bg-background-dark grid place-items-center m-10">
 	<div class="flex flex-col justify-center items-center gap-8 md:gap-12 md:w-2/3">
 		<img src="/Spinnerdex.png" alt="Spinnerdex" class="w-32 h-32 md:w-56 md:h-56" />
